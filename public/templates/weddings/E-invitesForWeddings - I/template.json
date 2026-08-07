@@ -1,0 +1,26 @@
+{
+  "id": 5,
+  "name": "Royal Grand Invite",
+  "category": "Weddings",
+  "style": "Interactive & Animated",
+  "description": "The flagship Royal Grand Invite — a fully interactive animated wedding e-invite. Features peacock motif splash screen, envelope opening reveal, multi-page event schedule (Mehendi, Sangeet, Wedding, Reception), photo gallery, animated countdown timer, and embedded background music. The gold-emerald palette evokes true royal opulence.",
+  "price": 2499,
+  "displayPrice": "₹2,499",
+  "currency": "INR",
+  "tag": "💍 Wedding",
+  "accentColor": "#fcd34d",
+  "imageSrc": "/templates/weddings/E-invitesForWeddings - I/feature.png",
+  "imageAlt": "Royal Grand interactive animated wedding e-invite with peacock motif",
+  "liveUrl": "/templates/weddings/E-invitesForWeddings - I/index.html",
+  "featured": true,
+  "pages": ["index.html"],
+  "highlights": [
+    "Peacock motif animated splash screen",
+    "Envelope opening reveal animation",
+    "Full event schedule (4 events)",
+    "Animated countdown to wedding day",
+    "Photo gallery with lightbox",
+    "Background music (Ganesh Stuti)"
+  ],
+  "folder": "E-invitesForWeddings - I"
+}

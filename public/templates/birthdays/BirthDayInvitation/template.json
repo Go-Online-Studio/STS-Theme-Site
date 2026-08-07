@@ -1,0 +1,26 @@
+{
+  "id": 2,
+  "name": "Honey Bear Birthday",
+  "category": "Birthdays",
+  "style": "Playful & Animated",
+  "description": "A delightfully animated birthday e-invite themed around a honey-loving bear. Warm amber honeycomb backgrounds, a playful cartoon bear with balloons and birthday cake, dripping honey border animations, and a cheerful birthday song make this invite irresistibly fun for kids and adults alike.",
+  "price": 1299,
+  "displayPrice": "₹1,299",
+  "currency": "INR",
+  "tag": "🎂 Birthday",
+  "accentColor": "#f59e0b",
+  "imageSrc": "/templates/birthdays/BirthDayInvitation/feature.png",
+  "imageAlt": "Honey Bear animated birthday party invitation",
+  "liveUrl": "/templates/birthdays/BirthDayInvitation/index.html",
+  "featured": true,
+  "pages": ["index.html"],
+  "highlights": [
+    "Adorable honey-bear animated theme",
+    "Honeycomb pattern background animation",
+    "Birthday cake with candle lighting effect",
+    "Cheerful birthday music autoplay",
+    "Event details and RSVP section",
+    "Works on all devices"
+  ],
+  "folder": "BirthDayInvitation"
+}

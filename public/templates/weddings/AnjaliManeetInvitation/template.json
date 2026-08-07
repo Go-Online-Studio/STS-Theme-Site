@@ -1,0 +1,25 @@
+{
+  "id": 10,
+  "name": "Anjali & Maneet Grand Invite",
+  "category": "Weddings",
+  "style": "Luxurious & Animated",
+  "description": "A grand multi-page animated wedding e-invite for Anjali & Maneet. Featuring envelope reveal animation, ceremony itinerary, animated Ganesh blessing, photo gallery, and traditional music. Rich maroon-gold palette with hand-crafted floral motifs throughout.",
+  "price": 2999,
+  "displayPrice": "₹2,999",
+  "currency": "INR",
+  "tag": "💍 Wedding",
+  "accentColor": "#b8952a",
+  "imageSrc": "/templates/weddings/AnjaliManeetInvitation/feature.png",
+  "imageAlt": "Anjali & Maneet grand luxurious animated wedding invitation",
+  "liveUrl": "/templates/weddings/AnjaliManeetInvitation/index.html",
+  "featured": true,
+  "pages": ["index.html"],
+  "highlights": [
+    "Envelope reveal animation",
+    "Multi-event itinerary (Mehendi, Sangeet, Wedding, Reception)",
+    "Animated Ganesh blessing opening",
+    "Photo gallery section",
+    "Background music (autoplay)"
+  ],
+  "folder": "AnjaliManeetInvitation"
+}

@@ -1,39 +1,39 @@
 /**
  * ─────────────────────────────────────────────────────────────────────────────
- *  InviteStash — Template Registry
- *  ─────────────────────────────────────────────────────────────────────────────
+ *  InviteStash — Template Registry (TypeScript Adapter)
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ *  ✅ DATA IS NOW JSON-DRIVEN
+ *  The source of truth is `data/templates.json`.
+ *  This file reads from that JSON and re-exports typed data.
+ *
+ *  DATA HIERARCHY
+ *  ──────────────
+ *  data/templates.json                          ← ROOT (all categories + all templates)
+ *    └── public/templates/weddings/wedding.json ← per-category aggregator
+ *          ├── .../AnjaliManeetInvitation/template.json  ← individual sub-template
+ *          ├── .../DoorDesign/template.json
+ *          ├── .../E-invitesForWeddings - I/template.json
+ *          ├── .../NewInvitaionOne/template.json
+ *          ├── .../curtainDesign/template.json
+ *          └── .../curtainDesign - II/template.json
  *
  *  HOW TO ADD A NEW TEMPLATE
- *  ─────────────────────────
- *  1. Drop your image file into the correct category folder inside:
- *        public/templates/<category>/your-image.png
- *
- *     Category folders:
- *        public/templates/weddings/
- *        public/templates/birthdays/
- *        public/templates/baby-showers/
- *        public/templates/corporate/
- *        public/templates/parties/
- *
- *  2. Add a new entry to the `templates` array below, following the same shape:
- *
- *        {
- *          id:        <unique number>,
- *          name:      "Template Display Name",
- *          category:  "Weddings" | "Birthdays" | "Baby Showers" | "Corporate" | "Parties",
- *          style:     "Short style description",
- *          price:     "₹999",
- *          tag:       "💍 Wedding",        <- emoji + label shown in the hero slider
- *          accentColor: "#f9a8d4",         <- glow colour on the hero card (any CSS hex)
- *          imageSrc:  "/templates/weddings/your-image.png",  <- preview image shown in cards
- *          imageAlt:  "Descriptive alt text for accessibility",
- *          liveUrl:   "/templates/weddings/E-invitesForWeddings/index.html", <- optional: opens live invite on click
- *          featured:  true,                <- set true to show it in the hero slider
- *        },
- *
- *  3. Save the file — the gallery and hero slider update automatically.
+ *  ──────────────────────────
+ *  1. Create a folder in: public/templates/<category>/<your-template-name>/
+ *  2. Add a feature.png (preview image) inside that folder
+ *  3. Create template.json inside that folder (copy schema from any existing one)
+ *  4. Add the same data to the category aggregator JSON:
+ *       public/templates/<category>/<category>.json  →  templates[] array
+ *  5. Add the same data to the root:
+ *       data/templates.json  →  templates[] array
+ *  6. Save — the gallery and hero slider update automatically.
  *  ─────────────────────────────────────────────────────────────────────────────
  */
+
+import templateData from "./templates.json";
+
+/* ─── Types ──────────────────────────────────────────────────────────────── */
 
 export type Category =
   | "All"
@@ -48,159 +48,63 @@ export interface Template {
   name: string;
   category: Exclude<Category, "All">;
   style: string;
-  price: string;
+  /** Full marketing description of the template */
+  description?: string;
+  /** Numeric price in INR (e.g. 2999) */
+  price: number | string;
+  /** Formatted display price (e.g. "₹2,999") */
+  displayPrice?: string;
+  /** Currency code */
+  currency?: string;
   tag: string;
   accentColor: string;
   imageSrc: string;
   imageAlt: string;
   /** Optional: URL to the live interactive invite (HTML file or external link) */
-  liveUrl?: string;
+  liveUrl?: string | null;
   /** Show in the hero marquee slider */
   featured?: boolean;
+  /** Key selling points of this template */
+  highlights?: string[];
+  /** Sub-folder name within category folder */
+  folder?: string;
+  /** Relative path to the sub-template's template.json */
+  sourceFile?: string;
 }
 
-/* ─── Add your templates below ────────────────────────────────────────────── */
-export const templates: Template[] = [
-  // ── Weddings ──────────────────────────────────────────────────────────────
-  {
-    id: 1,
-    name: "Minimalist Vow",
-    category: "Weddings",
-    style: "Elegant & Clean",
-    price: "₹1499",
-    tag: "💍 Wedding",
-    accentColor: "#f9a8d4",
-    imageSrc: "/templates/weddings/minimalist-vow.png",
-    imageAlt: "Minimalist Vow wedding invitation template",
-    featured: true,
-  },
+/* ─── Data from JSON ─────────────────────────────────────────────────────── */
 
-  // ── E-invites for Weddings — index (Full Interactive Invite) ──────────────
-  {
-    id: 5,
-    name: "Royal Grand Invite",
-    category: "Weddings",
-    style: "Interactive & Animated",
-    price: "₹2499",
-    tag: "💍 Wedding",
-    accentColor: "#fcd34d",
-    imageSrc: "/templates/weddings/E-invitesForWeddings/images/welcomImage.webp",
-    imageAlt: "Royal Grand interactive wedding e-invite",
-    liveUrl: "/templates/weddings/E-invitesForWeddings/index.html",
-    featured: true,
-  },
+/**
+ * All templates — sourced from data/templates.json
+ * Normalise the `price` field: JSON stores it as a number, but the
+ * Template interface also accepts the legacy "₹999" string format.
+ * We expose `displayPrice` (pre-formatted) for rendering.
+ */
+export const templates: Template[] = (
+  templateData.templates as Template[]
+).map((t) => ({
+  ...t,
+  // Legacy compatibility: if consumers use template.price as a display string,
+  // fall back to displayPrice. New code should use displayPrice directly.
+  price: t.displayPrice ?? `₹${t.price}`,
+}));
 
-  // ── E-invites for Weddings — Curtain Design ───────────────────────────────
-  {
-    id: 6,
-    name: "Curtain Reveal",
-    category: "Weddings",
-    style: "Dramatic Curtain Animation",
-    price: "₹1999",
-    tag: "💍 Wedding",
-    accentColor: "#fb7185",
-    imageSrc: "/templates/weddings/E-invitesForWeddings/images/Back_invitation1.avif",
-    imageAlt: "Curtain Reveal animated wedding e-invite",
-    liveUrl: "/templates/weddings/E-invitesForWeddings/curtainDesign.html",
-    featured: true,
-  },
-
-  // ── E-invites for Weddings — Door Design ─────────────────────────────────
-  {
-    id: 7,
-    name: "Golden Door",
-    category: "Weddings",
-    style: "Luxurious Door Opening",
-    price: "₹2199",
-    tag: "💍 Wedding",
-    accentColor: "#f59e0b",
-    imageSrc: "/templates/weddings/E-invitesForWeddings/images/Back_invitation2.avif",
-    imageAlt: "Golden Door wedding e-invite design",
-    liveUrl: "/templates/weddings/E-invitesForWeddings/DoorDesign.html",
-    featured: true,
-  },
-
-  // ── E-invites for Weddings — New Invitation One ───────────────────────────
-  {
-    id: 8,
-    name: "Floral Bloom",
-    category: "Weddings",
-    style: "Floral & Romantic",
-    price: "₹1799",
-    tag: "💍 Wedding",
-    accentColor: "#e879f9",
-    imageSrc: "/templates/weddings/E-invitesForWeddings/images/Back_invitation3.avif",
-    imageAlt: "Floral Bloom romantic wedding e-invite",
-    liveUrl: "/templates/weddings/E-invitesForWeddings/NewInvitaionOne.html",
-    featured: false,
-  },
-
-  // ── E-invites for Weddings — Curtain Design 2 ────────────────────────────
-  {
-    id: 9,
-    name: "Silk Drape",
-    category: "Weddings",
-    style: "Soft Curtain Reveal",
-    price: "₹1899",
-    tag: "💍 Wedding",
-    accentColor: "#c084fc",
-    imageSrc: "/templates/weddings/E-invitesForWeddings/images/Back_invitation4.avif",
-    imageAlt: "Silk Drape wedding curtain e-invite",
-    liveUrl: "/templates/weddings/E-invitesForWeddings/curtainDesign2.html",
-    featured: false,
-  },
-
-  // ── Birthdays ──────────────────────────────────────────────────────────────
-  {
-    id: 2,
-    name: "Retro Blast",
-    category: "Birthdays",
-    style: "Bold & Funky",
-    price: "₹999",
-    tag: "🎂 Birthday",
-    accentColor: "#00d2fd",
-    imageSrc: "/templates/birthdays/retro-blast.png",
-    imageAlt: "Retro Blast birthday invitation template",
-    featured: true,
-  },
-
-  // ── Corporate ─────────────────────────────────────────────────────────────
-  {
-    id: 3,
-    name: "Executive Grid",
-    category: "Corporate",
-    style: "Structured & Sharp",
-    price: "₹1999",
-    tag: "🏢 Corporate",
-    accentColor: "#a78bfa",
-    imageSrc: "/templates/corporate/executive-grid.png",
-    imageAlt: "Executive Grid corporate event invitation template",
-    featured: true,
-  },
-
-  // ── Baby Showers ──────────────────────────────────────────────────────────
-  {
-    id: 4,
-    name: "Stork & Stars",
-    category: "Baby Showers",
-    style: "Charming & Airy",
-    price: "₹899",
-    tag: "🍼 Baby Shower",
-    accentColor: "#86efac",
-    imageSrc: "/templates/baby-showers/stork-stars.png",
-    imageAlt: "Stork & Stars baby shower invitation template",
-    featured: true,
-  },
-];
-
-/** All unique categories derived from template list (for filter pills) */
+/** All unique category labels derived from the JSON (for filter pills) */
 export const categories: Category[] = [
   "All",
-  ...([...new Set(templates.map((t) => t.category))] as Exclude<
-    Category,
-    "All"
-  >[]),
+  ...([
+    ...new Set(templates.map((t) => t.category)),
+  ] as Exclude<Category, "All">[]),
 ];
 
 /** Only templates marked featured:true — used in the hero slider */
 export const featuredTemplates = templates.filter((t) => t.featured);
+
+/** Look up a template by id */
+export const getTemplateById = (id: number): Template | undefined =>
+  templates.find((t) => t.id === id);
+
+/** Get all templates for a given category */
+export const getTemplatesByCategory = (
+  category: Exclude<Category, "All">
+): Template[] => templates.filter((t) => t.category === category);

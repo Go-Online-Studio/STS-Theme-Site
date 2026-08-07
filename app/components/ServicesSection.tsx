@@ -1,3 +1,7 @@
+"use client";
+
+import Link from "next/link";
+
 const services = [
   {
     id: "design",
@@ -71,19 +75,23 @@ export default function ServicesSection() {
             Everything you need to host effortlessly. Designed for modern event creators
             who care about the experience.
           </p>
-          <button className="gradient-btn mt-8 px-6 py-3 rounded-full text-label-md flex items-center gap-2 w-fit">
-            Get Started Free
+          <Link
+            href="/services"
+            className="gradient-btn mt-8 px-6 py-3 rounded-full text-label-md flex items-center gap-2 w-fit"
+          >
+            Explore All Services
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
+          </Link>
         </div>
 
-        {/* Right grid — staggered */}
+        {/* Right grid — staggered, each card links to /services#id */}
         <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-5">
           {services.map((svc, i) => (
-            <div
+            <Link
               key={svc.id}
+              href={`/services#service-${svc.id}`}
               id={`service-${svc.id}`}
-              className={`service-card p-6 scroll-reveal ${svc.bg} ${svc.offset}`}
+              className={`service-card p-6 scroll-reveal ${svc.bg} ${svc.offset} cursor-pointer`}
               style={{ animationDelay: `${i * 0.1}s` }}
             >
               {/* Glow blob */}
@@ -98,7 +106,12 @@ export default function ServicesSection() {
               <p className="text-body-md text-on-surface-variant relative z-10">
                 {svc.desc}
               </p>
-            </div>
+              {/* Arrow hint */}
+              <div className={`mt-4 relative z-10 flex items-center gap-1 text-label-sm font-medium ${svc.accentColor} opacity-0 group-hover:opacity-100 transition-opacity`}>
+                Learn more
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -1,0 +1,25 @@
+{
+  "id": 7,
+  "name": "Golden Door Reveal",
+  "category": "Weddings",
+  "style": "Luxurious Door Opening",
+  "description": "A breathtaking animated wedding e-invite where two ornate golden temple doors swing open dramatically to unveil the invitation inside. Deep navy and gold palette with filigree patterns and ambient bokeh lighting creates a cinematic, unforgettable reveal.",
+  "price": 2199,
+  "displayPrice": "₹2,199",
+  "currency": "INR",
+  "tag": "💍 Wedding",
+  "accentColor": "#f59e0b",
+  "imageSrc": "/templates/weddings/DoorDesign/feature.png",
+  "imageAlt": "Golden Door animated wedding invitation — ornate doors opening",
+  "liveUrl": "/templates/weddings/DoorDesign/index.html",
+  "featured": true,
+  "pages": ["index.html"],
+  "highlights": [
+    "Cinematic dual-door opening animation",
+    "Ambient bokeh and sparkle effects",
+    "Deep navy and gold color theme",
+    "Event details with decorative layout",
+    "Background music support"
+  ],
+  "folder": "DoorDesign"
+}

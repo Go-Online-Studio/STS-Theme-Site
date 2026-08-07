@@ -1,0 +1,26 @@
+{
+  "id": 9,
+  "name": "Silk Drape",
+  "category": "Weddings",
+  "style": "Soft Curtain Reveal",
+  "description": "An ethereal and dreamy wedding e-invite featuring sheer lavender silk curtains that gently part to unveil the invitation in soft, floating motion. Fairy lights glow through the translucent fabric as flower petals drift down. The pastel purple-lavender palette creates a magical, storybook atmosphere perfect for modern romantic weddings.",
+  "price": 1899,
+  "displayPrice": "₹1,899",
+  "currency": "INR",
+  "tag": "💍 Wedding",
+  "accentColor": "#c084fc",
+  "imageSrc": "/templates/weddings/curtainDesign - II/feature.png",
+  "imageAlt": "Silk Drape lavender sheer curtain wedding e-invite",
+  "liveUrl": "/templates/weddings/curtainDesign - II/index.html",
+  "featured": false,
+  "pages": ["index.html"],
+  "highlights": [
+    "Sheer silk curtain soft-open animation",
+    "Lavender and pastel purple palette",
+    "Fairy lights bokeh effect",
+    "Drifting flower petal animation",
+    "Elegant event itinerary layout",
+    "Background ambient music"
+  ],
+  "folder": "curtainDesign - II"
+}

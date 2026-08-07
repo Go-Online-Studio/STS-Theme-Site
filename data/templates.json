@@ -1,0 +1,202 @@
+{
+  "_comment": "InviteStash Root Template Registry — Single source of truth. Only REAL templates with working index.html files are listed here. Each category has a per-category JSON at public/templates/<category>/<category>.json and each template has its own template.json in its sub-folder.",
+  "version": "2.0.0",
+  "categories": [
+    {
+      "id": "weddings",
+      "label": "Weddings",
+      "tag": "💍 Wedding",
+      "description": "Premium animated wedding e-invitations with music, animations, and personalized itineraries.",
+      "sourceFile": "/templates/weddings/wedding.json"
+    },
+    {
+      "id": "birthdays",
+      "label": "Birthdays",
+      "tag": "🎂 Birthday",
+      "description": "Fun, vibrant birthday invitation templates for all ages.",
+      "sourceFile": "/templates/birthdays/birthday.json"
+    }
+  ],
+  "templates": [
+    {
+      "id": 10,
+      "name": "Anjali & Maneet Grand Invite",
+      "category": "Weddings",
+      "style": "Luxurious & Animated",
+      "description": "A grand multi-page animated wedding e-invite for Anjali & Maneet. Featuring envelope reveal animation, ceremony itinerary, animated Ganesh blessing, photo gallery, and traditional music. Rich maroon-gold palette with hand-crafted floral motifs throughout.",
+      "price": 2999,
+      "displayPrice": "₹2,999",
+      "currency": "INR",
+      "tag": "💍 Wedding",
+      "accentColor": "#b8952a",
+      "imageSrc": "/templates/weddings/AnjaliManeetInvitation/feature.png",
+      "imageAlt": "Anjali & Maneet grand luxurious animated wedding invitation",
+      "liveUrl": "/templates/weddings/AnjaliManeetInvitation/index.html",
+      "featured": true,
+      "highlights": [
+        "Envelope reveal animation",
+        "Multi-event itinerary (Mehendi, Sangeet, Wedding, Reception)",
+        "Animated Ganesh blessing opening",
+        "Photo gallery section",
+        "Background music (autoplay)"
+      ],
+      "folder": "AnjaliManeetInvitation",
+      "sourceFile": "/templates/weddings/AnjaliManeetInvitation/template.json"
+    },
+    {
+      "id": 7,
+      "name": "Golden Door Reveal",
+      "category": "Weddings",
+      "style": "Luxurious Door Opening",
+      "description": "A breathtaking animated wedding e-invite where two ornate golden temple doors swing open dramatically to unveil the invitation inside. Deep navy and gold palette with filigree patterns and ambient bokeh lighting creates a cinematic, unforgettable reveal.",
+      "price": 2199,
+      "displayPrice": "₹2,199",
+      "currency": "INR",
+      "tag": "💍 Wedding",
+      "accentColor": "#f59e0b",
+      "imageSrc": "/templates/weddings/DoorDesign/feature.png",
+      "imageAlt": "Golden Door animated wedding invitation — ornate doors opening",
+      "liveUrl": "/templates/weddings/DoorDesign/index.html",
+      "featured": true,
+      "highlights": [
+        "Cinematic dual-door opening animation",
+        "Ambient bokeh and sparkle effects",
+        "Deep navy and gold color theme",
+        "Event details with decorative layout",
+        "Background music support"
+      ],
+      "folder": "DoorDesign",
+      "sourceFile": "/templates/weddings/DoorDesign/template.json"
+    },
+    {
+      "id": 5,
+      "name": "Royal Grand Invite",
+      "category": "Weddings",
+      "style": "Interactive & Animated",
+      "description": "The flagship Royal Grand Invite — a fully interactive animated wedding e-invite. Features peacock motif splash screen, envelope opening reveal, multi-page event schedule, photo gallery, animated countdown timer, and embedded background music. The gold-emerald palette evokes true royal opulence.",
+      "price": 2499,
+      "displayPrice": "₹2,499",
+      "currency": "INR",
+      "tag": "💍 Wedding",
+      "accentColor": "#fcd34d",
+      "imageSrc": "/templates/weddings/E-invitesForWeddings - I/feature.png",
+      "imageAlt": "Royal Grand interactive animated wedding e-invite with peacock motif",
+      "liveUrl": "/templates/weddings/E-invitesForWeddings - I/index.html",
+      "featured": true,
+      "highlights": [
+        "Peacock motif animated splash screen",
+        "Envelope opening reveal animation",
+        "Full event schedule (4 events)",
+        "Animated countdown to wedding day",
+        "Photo gallery with lightbox",
+        "Background music (Ganesh Stuti)"
+      ],
+      "folder": "E-invitesForWeddings - I",
+      "sourceFile": "/templates/weddings/E-invitesForWeddings - I/template.json"
+    },
+    {
+      "id": 8,
+      "name": "Floral Bloom",
+      "category": "Weddings",
+      "style": "Floral & Romantic",
+      "description": "A beautifully crafted floral wedding e-invite bathed in soft blush pinks and rose golds. Watercolor-style floral borders of peonies, roses, and jasmine frame the invitation with a delicate, romantic touch.",
+      "price": 1799,
+      "displayPrice": "₹1,799",
+      "currency": "INR",
+      "tag": "💍 Wedding",
+      "accentColor": "#e879f9",
+      "imageSrc": "/templates/weddings/NewInvitaionOne/feature.png",
+      "imageAlt": "Floral Bloom romantic blush pink wedding invitation",
+      "liveUrl": "/templates/weddings/NewInvitaionOne/index.html",
+      "featured": true,
+      "highlights": [
+        "Floral watercolor border animations",
+        "Soft blush pink and rose gold palette",
+        "Envelope opening reveal",
+        "Event details with floral dividers",
+        "Embedded wedding glimpses gallery",
+        "Background romantic music"
+      ],
+      "folder": "NewInvitaionOne",
+      "sourceFile": "/templates/weddings/NewInvitaionOne/template.json"
+    },
+    {
+      "id": 6,
+      "name": "Curtain Reveal",
+      "category": "Weddings",
+      "style": "Dramatic Curtain Animation",
+      "description": "A show-stopping wedding e-invite where rich crimson velvet curtains dramatically part at center stage to reveal the invitation. Golden rope tassels, warm spotlight, and rose petals falling complete the theatrical atmosphere.",
+      "price": 1999,
+      "displayPrice": "₹1,999",
+      "currency": "INR",
+      "tag": "💍 Wedding",
+      "accentColor": "#fb7185",
+      "imageSrc": "/templates/weddings/curtainDesign/feature.png",
+      "imageAlt": "Curtain Reveal dramatic crimson velvet wedding e-invite",
+      "liveUrl": "/templates/weddings/curtainDesign/index.html",
+      "featured": true,
+      "highlights": [
+        "Cinematic curtain parting animation",
+        "Crimson velvet texture curtains",
+        "Golden tassel rope details",
+        "Spotlight and rose petal effect",
+        "Full event details page",
+        "Background music"
+      ],
+      "folder": "curtainDesign",
+      "sourceFile": "/templates/weddings/curtainDesign/template.json"
+    },
+    {
+      "id": 9,
+      "name": "Silk Drape",
+      "category": "Weddings",
+      "style": "Soft Curtain Reveal",
+      "description": "An ethereal and dreamy wedding e-invite featuring sheer lavender silk curtains that gently part to unveil the invitation in soft, floating motion. Fairy lights glow through the translucent fabric as flower petals drift down.",
+      "price": 1899,
+      "displayPrice": "₹1,899",
+      "currency": "INR",
+      "tag": "💍 Wedding",
+      "accentColor": "#c084fc",
+      "imageSrc": "/templates/weddings/curtainDesign - II/feature.png",
+      "imageAlt": "Silk Drape lavender sheer curtain wedding e-invite",
+      "liveUrl": "/templates/weddings/curtainDesign - II/index.html",
+      "featured": false,
+      "highlights": [
+        "Sheer silk curtain soft-open animation",
+        "Lavender and pastel purple palette",
+        "Fairy lights bokeh effect",
+        "Drifting flower petal animation",
+        "Elegant event itinerary layout",
+        "Background ambient music"
+      ],
+      "folder": "curtainDesign - II",
+      "sourceFile": "/templates/weddings/curtainDesign - II/template.json"
+    },
+    {
+      "id": 2,
+      "name": "Honey Bear Birthday",
+      "category": "Birthdays",
+      "style": "Playful & Animated",
+      "description": "A delightfully animated birthday e-invite themed around a honey-loving bear. Warm amber honeycomb backgrounds, a playful cartoon bear with balloons and birthday cake, dripping honey border animations, and a cheerful birthday song make this invite irresistibly fun for kids and adults alike.",
+      "price": 1299,
+      "displayPrice": "₹1,299",
+      "currency": "INR",
+      "tag": "🎂 Birthday",
+      "accentColor": "#f59e0b",
+      "imageSrc": "/templates/birthdays/BirthDayInvitation/feature.png",
+      "imageAlt": "Honey Bear animated birthday party invitation",
+      "liveUrl": "/templates/birthdays/BirthDayInvitation/index.html",
+      "featured": true,
+      "highlights": [
+        "Adorable honey-bear animated theme",
+        "Honeycomb pattern background animation",
+        "Birthday cake with candle lighting effect",
+        "Cheerful birthday music autoplay",
+        "Event details and RSVP section",
+        "Works on all devices"
+      ],
+      "folder": "BirthDayInvitation",
+      "sourceFile": "/templates/birthdays/BirthDayInvitation/template.json"
+    }
+  ]
+}

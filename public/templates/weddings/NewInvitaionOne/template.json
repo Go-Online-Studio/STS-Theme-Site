@@ -1,0 +1,26 @@
+{
+  "id": 8,
+  "name": "Floral Bloom",
+  "category": "Weddings",
+  "style": "Floral & Romantic",
+  "description": "A beautifully crafted floral wedding e-invite bathed in soft blush pinks and rose golds. Watercolor-style floral borders of peonies, roses, and jasmine frame the invitation with a delicate, romantic touch. Perfect for couples who love a soft, dreamy aesthetic. Features envelope animation, event itinerary, and a photo gallery.",
+  "price": 1799,
+  "displayPrice": "₹1,799",
+  "currency": "INR",
+  "tag": "💍 Wedding",
+  "accentColor": "#e879f9",
+  "imageSrc": "/templates/weddings/NewInvitaionOne/feature.png",
+  "imageAlt": "Floral Bloom romantic blush pink wedding invitation",
+  "liveUrl": "/templates/weddings/NewInvitaionOne/index.html",
+  "featured": true,
+  "pages": ["index.html"],
+  "highlights": [
+    "Floral watercolor border animations",
+    "Soft blush pink and rose gold palette",
+    "Envelope opening reveal",
+    "Event details with floral dividers",
+    "Embedded wedding glimpses gallery",
+    "Background romantic music"
+  ],
+  "folder": "NewInvitaionOne"
+}

@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 const navLinks = [
-  { label: "Features", href: "#features" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Comparison", href: "#comparison" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Gallery", href: "/#gallery" },
+  { label: "Services", href: "/services" },
+  { label: "Comparison", href: "/#comparison" },
 ];
 
 export default function Navbar() {
@@ -37,13 +37,13 @@ export default function Navbar() {
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-body-md text-white/80 hover:text-white transition-colors duration-200"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -89,14 +89,14 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="md:hidden animate-slide-down glass-nav border-t border-outline-variant/30 px-6 py-4 flex flex-col gap-4">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
               className="text-body-md text-on-surface-variant hover:text-primary transition-colors py-1"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <button className="gradient-btn px-6 py-3 rounded-full text-label-md w-full mt-2">
             Get Access
