@@ -259,6 +259,237 @@ body {
   z-index: 10;
 }
 
+/* ─── Services — Sticky panel, cycling cards ──────────────────────────────── */
+
+/* Card enters from below (scrolling down) */
+@keyframes svc-enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(80px) scale(0.96);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Card enters from above (scrolling up / back) */
+@keyframes svc-enter-down {
+  from {
+    opacity: 0;
+    transform: translateY(-60px) scale(0.96);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Outer section — tall to give scroll room */
+.svc-outer {
+  position: relative;
+}
+
+/* Sticky panel — fills one viewport, sticks while section scrolls */
+.svc-panel {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2rem 1.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+  .svc-panel {
+    flex-direction: row;
+    gap: 6rem;
+    padding: 2rem 3rem;
+  }
+}
+
+/* Left: static heading + step list */
+.svc-header-col {
+  flex-shrink: 0;
+  max-width: 320px;
+  width: 100%;
+}
+
+/* Step list */
+.svc-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 2rem;
+}
+
+.svc-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-jetbrains);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--color-on-surface-variant);
+  opacity: 0.5;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.svc-step-active {
+  opacity: 1;
+}
+
+.svc-step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-outline-variant);
+  flex-shrink: 0;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.svc-step-active .svc-step-dot {
+  transform: scale(1.3);
+}
+
+.svc-step-label {
+  transition: opacity 0.3s ease;
+}
+
+/* Right: card stage */
+.svc-card-stage {
+  flex: 1;
+  position: relative;
+  max-width: 560px;
+  width: 100%;
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+}
+
+/* Animated wrapper — key-remounted to retrigger animation */
+.svc-card-wrap {
+  width: 100%;
+}
+
+.svc-card-wrap.svc-enter-up {
+  animation: svc-enter-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.svc-card-wrap.svc-enter-down {
+  animation: svc-enter-down 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* The card face */
+.svc-face {
+  display: flex;
+  flex-direction: column;
+  border-radius: 2rem;
+  border: 1px solid;
+  padding: 2.5rem;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.35s ease;
+  min-height: 340px;
+}
+
+.svc-face:hover {
+  transform: scale(1.015) translateY(-4px);
+}
+
+/* Number watermark */
+.svc-big-num {
+  font-family: var(--font-syne);
+  font-size: 8rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0.5rem;
+  right: 1.5rem;
+}
+
+/* Tag chip */
+.svc-chip {
+  font-family: var(--font-jetbrains);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  width: fit-content;
+  position: relative;
+  z-index: 1;
+}
+
+/* Icon bubble */
+.svc-icon-bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 1.25rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Learn more row */
+.svc-learn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-jetbrains);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.svc-face:hover .svc-learn {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.svc-arrow-svg {
+  transition: transform 0.25s ease;
+}
+
+.svc-face:hover .svc-arrow-svg {
+  transform: translateX(4px);
+}
+
+/* Ambient glow blob */
+.svc-glow-blob {
+  position: absolute;
+  right: -80px;
+  bottom: -80px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .neon-focus:focus-within {
   box-shadow: 0 0 15px rgba(0, 122, 148, 0.3);
   border-color: var(--color-primary-container);

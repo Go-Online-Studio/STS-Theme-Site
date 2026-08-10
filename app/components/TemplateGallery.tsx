@@ -16,16 +16,18 @@ function TemplateCard({ template, delay }: { template: (typeof templates)[number
       tabIndex={0}
       onClick={() => router.push(`/templates/${template.id}`)}
       onKeyDown={(e) => e.key === "Enter" && router.push(`/templates/${template.id}`)}
-      className="bg-surface rounded-xl border border-outline-variant/30 ambient-shadow overflow-hidden group cursor-pointer scroll-reveal"
+      className="bg-surface h-auto rounded-xl border border-outline-variant/30 ambient-shadow overflow-hidden group cursor-pointer scroll-reveal"
       style={delay ? { animationDelay: `${delay}s` } : undefined}
     >
       {/* Image */}
-      <div className="h-48 bg-surface-container-low relative overflow-hidden">
+      <div className="bg-surface-container-low relative overflow-hidden">
         <Image
           src={template.imageSrc}
           alt={template.imageAlt}
-          fill
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          width={0}
+          height={0}
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 25vw"
+          className="w-full h-auto transition-transform duration-500 group-hover:scale-105 block"
         />
         {/* Category badge — top right */}
         <div className="absolute top-3 right-3 bg-surface/80 backdrop-blur-sm px-3 py-1 rounded text-xs text-on-surface border border-outline-variant/50">
@@ -92,7 +94,7 @@ export default function TemplateGallery() {
       </div>
 
       {/* Grid — 1 col on mobile, 2 on md, 3 on lg */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filtered.map((t, i) => (
           <TemplateCard key={t.id} template={t} delay={i === 0 ? undefined : i * 0.1} />
         ))}
