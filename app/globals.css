@@ -632,21 +632,18 @@ details[open] .accordion-icon {
   border-color: var(--color-primary-container);
   color: var(--color-primary-container);
 }
-
-/* ─── Hero tagline (fills empty top space in fan-carousel-section) ─────────── */
+/* ─── Hero tagline (block-level layout above carousel) ─────────────────────── */
 .hero-tagline {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 110px 1.5rem 0;
+  padding: 0 1.5rem;
   text-align: center;
   pointer-events: none;
   z-index: 2;
+  margin-bottom: 2rem;
+  width: 100%;
 }
 
 .hero-label {
@@ -656,18 +653,18 @@ details[open] .accordion-icon {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-primary-container);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   opacity: 0.85;
 }
 
 .hero-headline {
   font-family: var(--font-syne);
-  font-size: clamp(28px, 4vw, 52px);
+  font-size: clamp(28px, 4.5vw, 52px);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--color-on-surface);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .hero-sub {
@@ -683,9 +680,12 @@ details[open] .accordion-icon {
   background: linear-gradient(180deg, #eef2ff 0%, #f5f7ff 50%, #faf8ff 80%, #ffffff 100%);
   position: relative;
   overflow: hidden;
-  padding-top: 100px; /* push below fixed navbar */
+  padding-top: 110px; /* space below navbar */
   padding-bottom: 40px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .fan-carousel-section::before {
   content: '';
@@ -800,23 +800,23 @@ details[open] .accordion-icon {
 
 @media (max-width: 640px) {
   .fan-carousel-section {
-    padding-top: 80px;
+    padding-top: 100px;
     padding-bottom: 20px;
   }
   .fan-stage {
-    height: 480px;
+    height: 320px;
     perspective: 1200px;
   }
   .fan-card {
-    width: 195px;
-    height: 385px;
+    width: 150px;
+    height: 260px;
     bottom: 20px;
     transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
                 box-shadow 0.4s ease;
   }
   .fan-card .card-label {
     font-size: 10px;
-    padding: 12px 8px;
+    padding: 10px 6px;
   }
 }
 
