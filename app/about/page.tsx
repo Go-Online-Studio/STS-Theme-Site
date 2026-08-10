@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
   title: "About Us | InviteStash",
@@ -273,36 +274,7 @@ export default function AboutPage() {
         </section>
       </main>
 
-      {/* ── Footer Shell ─────────────────────────────────────── */}
-      <footer className="w-full py-16 px-6 bg-surface-container-low border-t border-outline-variant/20">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <Link href="/" className="text-3xl font-syne font-extrabold text-primary mb-2">
-              InviteStash
-            </Link>
-            <p className="text-on-surface-variant text-label-md max-w-xs">
-              © 2025 InviteStash. Premium Invitations for Modern Moments.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-8 text-label-md">
-            <Link href="#" className="text-on-surface-variant hover:text-secondary transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="text-on-surface-variant hover:text-secondary transition-colors">
-              Terms &amp; Conditions
-            </Link>
-            <Link href="#" className="text-on-surface-variant hover:text-secondary transition-colors">
-              Refund Policy
-            </Link>
-            <Link href="/about" className="text-primary underline">
-              About Us
-            </Link>
-            <Link href="/services" className="text-on-surface-variant hover:text-secondary transition-colors">
-              Services
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

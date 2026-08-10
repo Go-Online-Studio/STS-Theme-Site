@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { services } from "@/data/services";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import TemplateGallery from "@/app/components/TemplateGallery";
 
 export const metadata: Metadata = {
   title: "Services — InviteStash",
@@ -86,113 +88,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── Services Grid ─────────────────────────────────────── */}
-      <section id="services-list" className="max-w-7xl mx-auto px-6 pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {services.map((svc) => (
-            <Link
-              key={svc.id}
-              href={`/services/${svc.id}`}
-              id={`service-${svc.id}`}
-              className="relative rounded-3xl border border-outline-variant/30 bg-surface-container-low overflow-hidden group hover:border-outline-variant/60 transition-all duration-300"
-              style={{ boxShadow: `0 0 40px ${svc.glowColor}` }}
-            >
-              {/* Hover glow */}
-              <div
-                aria-hidden
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{
-                  background: `radial-gradient(ellipse at top left, ${svc.glowColor} 0%, transparent 60%)`,
-                }}
-              />
-
-              <div className="relative z-10 p-8 flex flex-col h-full">
-                {/* Top row */}
-                <div className="flex items-start justify-between mb-5">
-                  <div>
-                    {svc.badge && (
-                      <span
-                        className="inline-block text-label-sm font-bold px-3 py-1 rounded-full mb-3 text-white"
-                        style={{
-                          background: `linear-gradient(135deg, ${svc.accentFrom}, ${svc.accentTo})`,
-                        }}
-                      >
-                        {svc.badge}
-                      </span>
-                    )}
-                    <div
-                      className="text-4xl font-bold leading-none"
-                      style={{
-                        background: `linear-gradient(135deg, ${svc.accentFrom}, ${svc.accentTo})`,
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                      }}
-                    >
-                      {svc.emoji}
-                    </div>
-                  </div>
-                  {/* Arrow — shows on hover */}
-                  <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center border opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1"
-                    style={{
-                      borderColor: `${svc.accentFrom}50`,
-                      color: svc.accentTo,
-                    }}
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
-
-                <h2 className="text-2xl font-syne font-bold text-on-surface mb-2">{svc.title}</h2>
-                <p
-                  className="text-label-md font-medium mb-4"
-                  style={{
-                    background: `linear-gradient(135deg, ${svc.accentFrom}, ${svc.accentTo})`,
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
-                  {svc.tagline}
-                </p>
-                <p className="text-body-md text-on-surface-variant leading-relaxed mb-6 flex-1">
-                  {svc.description}
-                </p>
-
-                {/* Features preview — first 3 */}
-                <ul className="space-y-2 mb-6">
-                  {svc.features.slice(0, 3).map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-body-sm text-on-surface-variant">
-                      <span
-                        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                        style={{ background: svc.accentTo }}
-                      />
-                      {f}
-                    </li>
-                  ))}
-                  <li className="text-body-sm text-on-surface-variant opacity-60">
-                    +{svc.features.length - 3} more included…
-                  </li>
-                </ul>
-
-                {/* CTA row */}
-                <div className="flex items-center justify-between">
-                  <span
-                    className="text-label-md font-semibold flex items-center gap-1 group-hover:gap-2 transition-all"
-                    style={{ color: svc.accentTo }}
-                  >
-                    View details & pricing →
-                  </span>
-                  <span className="text-label-sm text-on-surface-variant">
-                    From {svc.pricing[0].price}
-                  </span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+      <TemplateGallery />
 
       {/* ── How it works ─────────────────────────────────────── */}
       <section className="bg-surface-container-low border-t border-outline-variant/20 py-24 px-6">
@@ -258,9 +154,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <footer className="border-t border-outline-variant/20 py-8 px-6 text-center">
-        <p className="text-body-sm text-on-surface-variant">© 2025 InviteStash. All rights reserved.</p>
-      </footer>
+      <Footer />
     </div>
   );
 }

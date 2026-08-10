@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import type { Template } from "@/data/templates";
 
 const journeySteps = [
@@ -403,33 +404,7 @@ export default function TemplateDetailClient({ template, related }: Props) {
       </main>
 
       {/* ── Footer ─────────────────────────────────────────── */}
-      <footer className="bg-background py-20 border-t border-outline-variant/10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-10">
-          <div className="flex flex-col gap-4">
-            <Link href="/" className="font-syne font-extrabold text-4xl tracking-tighter text-on-surface">
-              InviteStash
-            </Link>
-            <p className="text-body-md text-on-surface-variant/60 max-w-xs">
-              Elevating the standard of digital invitations through immersive design and narrative technology.
-            </p>
-            <p className="text-label-sm text-outline mt-4">© 2025 InviteStash. Redefining the RSVP.</p>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-10">
-            {[
-              { title: "Legal", links: ["Terms", "Privacy"] },
-              { title: "Contact", links: ["Support", "Press"] },
-              { title: "Social", links: ["Instagram", "LinkedIn"] },
-            ].map((col) => (
-              <div key={col.title} className="flex flex-col gap-3">
-                <span className="text-label-md text-on-surface font-bold uppercase tracking-widest mb-1">{col.title}</span>
-                {col.links.map((l) => (
-                  <a key={l} href="#" className="text-body-md text-on-surface-variant hover:text-primary transition-colors">{l}</a>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

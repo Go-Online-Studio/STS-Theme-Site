@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function ContactClient() {
   const [status, setStatus] = useState<"idle" | "submitting" | "sent">("idle");
@@ -299,34 +300,7 @@ export default function ContactClient() {
         </section>
       </main>
 
-      {/* ── Footer Shell ─────────────────────────────────────── */}
-      <footer className="bg-surface-container-low w-full py-16 px-6 border-t border-outline-variant/20">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-col gap-2">
-            <Link href="/" className="text-3xl font-syne font-extrabold text-primary">
-              InviteStash
-            </Link>
-            <p className="text-body-md text-on-surface-variant max-w-sm">
-              © 2025 InviteStash. Premium Invitations for Modern Moments.
-            </p>
-          </div>
-
-          <div className="flex gap-8 text-label-md">
-            <Link href="#" className="text-on-surface-variant hover:text-secondary transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="text-on-surface-variant hover:text-secondary transition-colors">
-              Terms &amp; Conditions
-            </Link>
-            <Link href="#" className="text-on-surface-variant hover:text-secondary transition-colors">
-              Refund Policy
-            </Link>
-            <Link href="/about" className="text-on-surface-variant hover:text-secondary transition-colors">
-              About Us
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
