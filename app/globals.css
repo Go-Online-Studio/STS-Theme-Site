@@ -259,7 +259,36 @@ body {
   z-index: 10;
 }
 
-/* ─── Services — Sticky panel, cycling cards ──────────────────────────────── */
+/* Mobile & tablet: keep sticky cycling cards centered and show heading/subline, but hide steps list and button */
+@media (max-width: 899px) {
+  .svc-header-col {
+    max-width: 100%;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .svc-steps,
+  .svc-header-col .gradient-btn {
+    display: none !important;
+  }
+  .svc-panel {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
+  .svc-card-stage {
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: auto;
+  }
+}
+
+
 
 /* Card enters from below (scrolling down) */
 @keyframes svc-enter-up {
@@ -312,7 +341,7 @@ body {
 @media (min-width: 900px) {
   .svc-panel {
     flex-direction: row;
-    gap: 6rem;
+    gap: 3rem;
     padding: 2rem 3rem;
   }
 }
@@ -320,7 +349,7 @@ body {
 /* Left: static heading + step list */
 .svc-header-col {
   flex-shrink: 0;
-  max-width: 320px;
+  max-width: 300px;
   width: 100%;
 }
 
@@ -370,9 +399,9 @@ body {
 .svc-card-stage {
   flex: 1;
   position: relative;
-  max-width: 560px;
+  max-width: 680px;
   width: 100%;
-  min-height: 380px;
+  min-height: 420px;
   display: flex;
   align-items: center;
 }
@@ -514,6 +543,13 @@ body {
   animation-play-state: paused;
 }
 
+/* Faster marquee on mobile */
+@media (max-width: 640px) {
+  .animate-marquee {
+    animation-duration: 8s;
+  }
+}
+
 @keyframes fade-in-up {
   from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -595,6 +631,51 @@ details[open] .accordion-icon {
 .filter-pill-inactive:hover {
   border-color: var(--color-primary-container);
   color: var(--color-primary-container);
+}
+
+/* ─── Hero tagline (fills empty top space in fan-carousel-section) ─────────── */
+.hero-tagline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 110px 1.5rem 0;
+  text-align: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-label {
+  font-family: var(--font-jetbrains);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary-container);
+  margin-bottom: 14px;
+  opacity: 0.85;
+}
+
+.hero-headline {
+  font-family: var(--font-syne);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-on-surface);
+  margin-bottom: 14px;
+}
+
+.hero-sub {
+  font-family: var(--font-hanken);
+  font-size: clamp(14px, 1.5vw, 17px);
+  line-height: 1.6;
+  color: var(--color-on-surface-variant);
+  max-width: 480px;
 }
 
 /* ─── 3D Fan Carousel (Replaced Marquee Hero) ────────────────────────────── */
@@ -705,18 +786,33 @@ details[open] .accordion-icon {
   }
 }
 
+/* ─── 32-inch+ big screens (≥ 1920px) ────────────────────────────────────── */
+@media (min-width: 1920px) {
+  .fan-stage {
+    height: 700px;
+  }
+  .fan-card {
+    width: 280px;
+    height: 500px;
+    bottom: 50px;
+  }
+}
+
 @media (max-width: 640px) {
   .fan-carousel-section {
     padding-top: 80px;
     padding-bottom: 20px;
   }
   .fan-stage {
-    height: 380px;
+    height: 480px;
+    perspective: 1200px;
   }
   .fan-card {
-    width: 170px;
-    height: 275px;
+    width: 195px;
+    height: 385px;
     bottom: 20px;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 0.4s ease;
   }
   .fan-card .card-label {
     font-size: 10px;

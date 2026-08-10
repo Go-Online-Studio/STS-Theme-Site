@@ -127,6 +127,25 @@ export default function ServicesSection() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Mobile card scroll animation via IntersectionObserver
+  useEffect(() => {
+    const cards = document.querySelectorAll(".svc-mobile-card");
+    if (!cards.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("svc-mob-reveal");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
+
   const svc = services[activeIdx];
   // +1 extra viewport so the last card has breathing room before the sticky releases
   const totalHeight = `${(services.length + 1) * 100}vh`;

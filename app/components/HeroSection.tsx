@@ -43,8 +43,8 @@ export default function HeroSection() {
 
     const theta = (offset / half) * maxAngle;
 
-    // Spread multiplier: push fanned cards to the edges on mobile and tablet for clear gaps
-    const spreadMultiplier = isMobile ? 2.7 : isTablet ? 1.41 : 1.35;
+    // Spread multiplier: original perfect values for laptop/PC; mobile wider for spacing
+    const spreadMultiplier = isMobile ? 3.1 : isTablet ? 1.41 : 1.35;
     const tx = R * Math.sin(theta) * spreadMultiplier;
 
     // Cylinder depth: center is pushed back (tz=20), fanned side cards pull forward (larger tz)
@@ -62,24 +62,20 @@ export default function HeroSection() {
       ? -Math.sign(offset) * Math.min(2.0, absOff) * 22
       : -theta * 1.05 * (180 / Math.PI);
 
-    // Scaling: center card is smaller (scale 0.72), fanned side cards are larger (scale 0.95 - 1.0)
+    // Scaling: center card is LARGEST on mobile (scale 0.88), side cards slightly smaller
     // On PC/desktop, preserve the original concave layout (center card smaller, edges larger)
     const sc = isMobile
-      ? 0.72 + Math.min(1.0, absOff) * 0.23
+      ? 0.88 - Math.min(1.0, absOff) * 0.10
       : isTablet
       ? 0.72 + Math.min(2.0, absOff) * 0.13
       : 0.76 + (absOff / half) * 0.24;
 
     // Responsive Opacity / Visibility: Only 3 cards on mobile, 5 cards on tablet
+    // Mobile: cards stay FULLY visible until they physically slide off screen (offset > 2.0)
+    // No fade-in / fade-out on mobile — instant on, instant off
     let op = 0;
     if (isMobile) {
-      if (absOff <= 1.2) {
-        op = 1.0;
-      } else if (absOff < 1.5) {
-        op = 1.0 - (absOff - 1.2) / 0.3;
-      } else {
-        op = 0.0;
-      }
+      op = absOff <= 2.0 ? 1.0 : 0.0;
     } else if (isTablet) {
       if (absOff <= 2.2) {
         op = 1.0;
@@ -214,6 +210,18 @@ export default function HeroSection() {
       onMouseEnter={() => { isHoveredRef.current = true; }}
       onMouseLeave={() => { isHoveredRef.current = false; handleDragEnd(); }}
     >
+      {/* ── Tagline — fills the empty top space above the carousel ── */}
+      <div className="hero-tagline">
+        <span className="hero-label">✦ Digital Invitations, Reimagined</span>
+        <h1 className="hero-headline">
+          Every Event Deserves a{" "}
+          <span className="gradient-text">Stunning Invite</span>
+        </h1>
+        <p className="hero-sub">
+          Design, send &amp; track beautiful digital invitations in minutes — no design skills needed.
+        </p>
+      </div>
+
       <div
         ref={stageRef}
         className="fan-stage"
