@@ -89,7 +89,7 @@ export default function ServicesSection() {
           {services.map((svc, i) => (
             <Link
               key={svc.id}
-              href={`/services#service-${svc.id}`}
+              href={`/services/${svc.id}`}
               id={`service-${svc.id}`}
               className={`service-card p-6 scroll-reveal ${svc.bg} ${svc.offset} cursor-pointer`}
               style={{ animationDelay: `${i * 0.1}s` }}

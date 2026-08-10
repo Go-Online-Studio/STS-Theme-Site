@@ -202,19 +202,37 @@ body {
   border-bottom: 1px solid rgba(190, 200, 205, 0.4);
 }
 
-/* Navbar at top of page — solid black, no blur */
+/* Navbar at top of page — transparent bg */
 .navbar-top {
-  background: #000000;
+  background: transparent !important;
   border-bottom: 1px solid transparent;
 }
+.navbar-top a:not(.gradient-btn),
+.navbar-top button:not(.gradient-btn),
+.navbar-top div:not(.gradient-btn) {
+  color: #000000 !important;
+}
+.navbar-top button:not(.gradient-btn) svg {
+  stroke: #000000 !important;
+  color: #000000 !important;
+}
 
-/* Navbar after scrolling — frosted glass, transparent */
+/* Navbar after scrolling — frosted glass, white transparent */
 .navbar-scrolled {
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.8) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+.navbar-scrolled a:not(.gradient-btn),
+.navbar-scrolled button:not(.gradient-btn),
+.navbar-scrolled div:not(.gradient-btn) {
+  color: #000000 !important;
+}
+.navbar-scrolled button:not(.gradient-btn) svg {
+  stroke: #000000 !important;
+  color: #000000 !important;
 }
 
 
@@ -324,14 +342,14 @@ details[open] .accordion-icon {
 /* ─── Filter pill ─────────────────────────────────────────────────────────── */
 .filter-pill {
   padding: 8px 20px;
-  border-radius: 9999px;
+  border-radius: 10px;
   font-family: var(--font-jetbrains);
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.04em;
   transition: all 0.2s ease;
   cursor: pointer;
-  border: 1.5px solid transparent;
+  border: 0.1px solid transparent;
 }
 .filter-pill-active {
   background: var(--color-primary-container);
@@ -348,221 +366,130 @@ details[open] .accordion-icon {
   color: var(--color-primary-container);
 }
 
-/* ─── Marquee Hero ───────────────────────────────────────────────────────── */
-.marquee-hero {
+/* ─── 3D Fan Carousel (Replaced Marquee Hero) ────────────────────────────── */
+.fan-carousel-section {
+  background: linear-gradient(180deg, #eef2ff 0%, #f5f7ff 50%, #faf8ff 80%, #ffffff 100%);
   position: relative;
-  width: 100%;
-  /* full viewport minus the 64px navbar so nothing overlaps */
-  height: calc(100vh - 64px);
-  min-height: 560px;
-  margin-top: 64px;           /* push below fixed navbar */
   overflow: hidden;
-  background: #06091a;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 24px;
-  padding: 32px 0;
+  padding-top: 100px; /* push below fixed navbar */
+  padding-bottom: 40px;
+  width: 100%;
 }
-
-/* Ambient radial glow blob */
-.marquee-hero-bg {
+.fan-carousel-section::before {
+  content: '';
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 60% 50% at 20% 40%, rgba(0, 210, 253, 0.12) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 60% at 80% 60%, rgba(167, 139, 250, 0.10) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 40% at 50% 80%, rgba(249, 168, 212, 0.08) 0%, transparent 70%);
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(0, 122, 148, 0.08) 0%, transparent 70%);
   pointer-events: none;
-  z-index: 0;
 }
 
-/* ── Row wrapper ─────────────────────────────────────────────────────────── */
-.marquee-row {
+/* Perspective stage */
+.fan-stage {
+  perspective: 1600px;
+  perspective-origin: 50% 50%;
   position: relative;
   width: 100%;
-  /* lock the row to exactly card height so nothing bleeds out */
-  height: 320px;
-  overflow: hidden;
-  z-index: 1;
-  flex-shrink: 0;
+  height: 520px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  user-select: none;
+  overflow: visible;
+  cursor: grab;
 }
 
-/* ── Scrolling tracks ────────────────────────────────────────────────────── */
-.marquee-track {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  /* width is managed by children — do NOT set max-content on the outer track */
-  height: 100%;
+.fan-stage.grabbing,
+.fan-stage.grabbing * {
+  cursor: grabbing !important;
+}
+
+/* Individual card - Borderless, full-height, deep drop shadow */
+.fan-card {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  width: 220px;
+  height: 360px;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  transform-origin: center bottom;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.5s ease,
+              opacity 0.5s ease,
+              filter 0.5s ease;
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.22), 0 18px 36px -18px rgba(0, 0, 0, 0.28);
+  background: transparent;
+  border: none;
   will-change: transform;
 }
-
-/*
-  We duplicate the list 3× so translateX(-33.333%) seamlessly
-  loops regardless of how many items there are.
-*/
-@keyframes marqueeLeft {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-33.333%); }
-}
-@keyframes marqueeRight {
-  from { transform: translateX(-33.333%); }
-  to   { transform: translateX(0); }
-}
-
-.marquee-track-left {
-  animation: marqueeLeft 22s linear infinite;
-}
-.marquee-track-right {
-  animation: marqueeRight 26s linear infinite;
-}
-
-/* Pause on hover anywhere in the row */
-.marquee-row:hover .marquee-track-left,
-.marquee-row:hover .marquee-track-right {
-  animation-play-state: paused;
-}
-
-/* ── Individual card ─────────────────────────────────────────────────────── */
-.marquee-card {
-  position: relative;
-  /*
-    5 cards visible = 100vw / 5 minus gaps.
-    gap is 20px between cards; 4 gaps for 5 cards = 80px total.
-    Each card = (100vw - 80px) / 5
-  */
-  width: calc((100vw - 80px) / 5);
-  height: 300px;
-  border-radius: 18px;
-  overflow: hidden;
-  flex-shrink: 0;
-  cursor: pointer;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.35s ease;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-}
-.marquee-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.08);
-  z-index: 10;
-}
-
-.marquee-card-img-wrap {
-  position: absolute;
-  inset: 0;
-}
-
-.marquee-card-img {
+.fan-card img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: center top;
-  transition: transform 0.5s ease;
-}
-.marquee-card:hover .marquee-card-img {
-  transform: scale(1.06);
-}
-
-/* Per-card colour glow at the bottom */
-.marquee-card-glow {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 35%,
-    rgba(0, 0, 0, 0.15) 55%,
-    rgba(0, 0, 0, 0.88) 100%
-  );
-}
-.marquee-card-glow::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 80px;
-  background: linear-gradient(to top, var(--glow, #00d2fd), transparent);
-  opacity: 0.22;
-  transition: opacity 0.35s ease;
-}
-.marquee-card:hover .marquee-card-glow::after {
-  opacity: 0.45;
-}
-
-/* Bottom label */
-.marquee-card-label {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 16px 16px 18px;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.marquee-card-tag {
-  font-family: var(--font-jetbrains);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-}
-
-.marquee-card-name {
-  font-family: var(--font-syne);
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.2;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
-}
-
-/* ── Edge fade masks ─────────────────────────────────────────────────────── */
-.marquee-fade-left,
-.marquee-fade-right {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 140px;
-  z-index: 5;
+  display: block;
+  border-radius: 24px;
   pointer-events: none;
 }
-.marquee-fade-left {
+
+/* Label overlay */
+.fan-card .card-label {
+  position: absolute;
+  bottom: 0;
   left: 0;
-  background: linear-gradient(to right, #06091a 0%, transparent 100%);
-}
-.marquee-fade-right {
   right: 0;
-  background: linear-gradient(to left, #06091a 0%, transparent 100%);
+  padding: 20px 14px 16px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, transparent 100%);
+  color: #fff;
+  font-family: var(--font-syne), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+  border-radius: 0 0 24px 24px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.fan-card:hover .card-label,
+.fan-card.active .card-label {
+  opacity: 1;
 }
 
-/* ── Mobile: show 2 cards on small screens ───────────────────────────────── */
+@media (max-width: 1024px) {
+  .fan-stage {
+    height: 470px;
+  }
+  .fan-card {
+    width: 190px;
+    height: 310px;
+    bottom: 30px;
+  }
+  .fan-card .card-label {
+    font-size: 12px;
+    padding: 16px 10px 12px;
+  }
+}
+
 @media (max-width: 640px) {
-  .marquee-hero {
-    height: calc(100vh - 64px);
-    gap: 16px;
-    padding: 20px 0;
+  .fan-carousel-section {
+    padding-top: 80px;
+    padding-bottom: 20px;
   }
-  .marquee-row { height: 220px; }
-  .marquee-card {
-    /* 2 cards visible on mobile */
-    width: calc((100vw - 36px) / 2);
-    height: 210px;
-    border-radius: 14px;
+  .fan-stage {
+    height: 380px;
   }
-  .marquee-card-name { font-size: 13px; }
-  .marquee-fade-left,
-  .marquee-fade-right { width: 40px; }
-}
-
-/* ── Tablet: show 3 cards ────────────────────────────────────────────────── */
-@media (min-width: 641px) and (max-width: 1024px) {
-  .marquee-row { height: 270px; }
-  .marquee-card {
-    width: calc((100vw - 60px) / 3);
-    height: 260px;
+  .fan-card {
+    width: 170px;
+    height: 275px;
+    bottom: 20px;
+  }
+  .fan-card .card-label {
+    font-size: 10px;
+    padding: 12px 8px;
   }
 }
 

@@ -4,9 +4,11 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const navLinks = [
-  { label: "Gallery", href: "/#gallery" },
+  // { label: "Gallery", href: "/#gallery" },
   { label: "Services", href: "/services" },
-  { label: "Comparison", href: "/#comparison" },
+  { label: "About Us", href: "/about" },
+  { label: "Contact Us", href: "/contact" },
+  // { label: "Comparison", href: "/#comparison" },
 ];
 
 export default function Navbar() {
@@ -27,12 +29,12 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a
-          href="#"
+        <Link
+          href="/"
           className="text-headline-md font-syne font-bold tracking-tight text-white"
         >
           InviteStash
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
