@@ -58,6 +58,8 @@ function PhoneMockup({
 }: {
   template: Template;
   mockupRef?: React.RefObject<HTMLDivElement | null>;
+
+  
 }) {
   return (
     <div className="relative group w-full max-w-[310px] sm:max-w-[330px]">
@@ -78,8 +80,11 @@ function PhoneMockup({
         <div className="w-full aspect-[9/19.5] relative rounded-[2.5rem] overflow-hidden bg-neutral-900 border border-neutral-800/40">
           
           {/* iOS Status Bar */}
-          <div className="absolute top-0 inset-x-0 h-11 z-30 flex justify-between items-center px-6 text-white text-[11px] font-semibold tracking-tight select-none pointer-events-none">
-            <span>9:41</span>
+          <div className="absolute bg-black/70 backdrop-blur-md top-0 inset-x-0 h-11 z-30 flex justify-between items-center px-6 text-white text-[11px] font-semibold tracking-tight select-none pointer-events-none">
+            <span>{(new Date().getHours() > 12 ? new Date().getHours() - 12 : new Date().getHours())} : {new Date().getMinutes()}
+              {new Date().getHours() > 12 ? " PM" : " AM"}
+
+            </span>
             {/* Dynamic Island */}
             <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-22 h-5 bg-neutral-950 rounded-full flex items-center justify-center border border-white/5" />
             <div className="flex items-center gap-1.5">
@@ -241,9 +246,7 @@ export default function TemplateDetailClient({ template, related }: Props) {
               </div>
 
               {/* Price & Action Cards Box */}
-              <div className="reveal-el glass-card p-8 rounded-[2rem] border border-outline-variant/10 shadow-2xl flex flex-col gap-6 relative overflow-hidden bg-white/40 backdrop-blur-md">
-                {/* Visual Accent glow line on top of card */}
-                <div className="absolute top-0 inset-x-0 h-1.5" style={{ background: template.accentColor }} />
+              <div className="reveal-el p-8 flex flex-col gap-6 relative overflow-hidden ">
                 
                 <div className="flex justify-between items-start flex-wrap gap-4">
                   <div>
