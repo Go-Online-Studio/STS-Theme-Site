@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TemplateGallery from "@/app/components/TemplateGallery";
@@ -95,51 +96,46 @@ export default function ServicesPage() {
           style={{ background: "radial-gradient(circle, #cb00b6, transparent)" }}
         />
 
-        {/* ── Grid Container: text in center, decorative cards on sides ── */}
+        {/* ── Grid Container: text in center, template showcase on sides ── */}
         <div className="services-hero-container">
 
           {/* Left Column Showcase Cards */}
           <div className="hero-side-column hero-side-column-left">
-            {/* Card 1: Design Details */}
-            <div className="ui-feature-card">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xl">🎨</span>
-                <span className="text-label-sm font-bold text-primary">Editorial Design</span>
+            {/* Wedding Template Card */}
+            <Link href="#gallery" className="feature-image-card" aria-label="View Wedding Templates">
+              <Image
+                src="/templates/weddings/AnjaliManeetInvitation/feature.png"
+                alt="Premium Wedding Template"
+                fill
+                sizes="150px"
+                className="feature-image-pic"
+                priority
+              />
+              <div className="mockup-label-overlay">
+                <span className="mockup-label-category">Weddings</span>
+                <h3 className="mockup-label-title">Anjali & Maneet</h3>
               </div>
-              <p className="text-body-sm text-on-surface-variant font-medium leading-relaxed">
-                Premium layout, custom serif typography &amp; ambient background effects.
-              </p>
-            </div>
+            </Link>
 
-            {/* Card 2: RSVP Tracker */}
-            <div className="ui-feature-card">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xl">👥</span>
-                <span className="text-label-sm font-bold text-secondary">Guest Tracker</span>
+            {/* Birthday Template Card */}
+            <Link href="#gallery" className="feature-image-card" aria-label="View Birthday Templates">
+              <Image
+                src="/templates/birthdays/BirthDayInvitation/feature.png"
+                alt="Fun Birthday Template"
+                fill
+                sizes="150px"
+                className="feature-image-pic"
+                priority
+              />
+              <div className="mockup-label-overlay">
+                <span className="mockup-label-category">Birthdays</span>
+                <h3 className="mockup-label-title">Honey Bear</h3>
               </div>
-              <div className="mt-2 text-headline-sm font-syne font-bold text-on-surface">148 RSVP&apos;d</div>
-              <p className="text-label-sm text-outline mt-1">122 attending • 12 veg • 6 gluten-free</p>
-            </div>
-
-            {/* Card 3: Music Player */}
-            <div className="ui-feature-card">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xl">🎵</span>
-                <span className="text-label-sm font-bold text-tertiary">Ambient Music</span>
-              </div>
-              <p className="text-label-sm text-on-surface-variant truncate font-semibold">Perfect_Piano.mp3</p>
-              <div className="flex gap-0.5 items-end h-4 mt-2">
-                <div className="w-1 bg-primary h-3 animate-pulse" />
-                <div className="w-1 bg-primary h-2 animate-pulse" style={{ animationDelay: "0.2s" }} />
-                <div className="w-1 bg-primary h-4 animate-pulse" style={{ animationDelay: "0.4s" }} />
-                <div className="w-1 bg-primary h-1 animate-pulse" style={{ animationDelay: "0.1s" }} />
-                <div className="w-1 bg-primary h-3 animate-pulse" style={{ animationDelay: "0.3s" }} />
-              </div>
-            </div>
+            </Link>
           </div>
 
           {/* Center Column: Text Content */}
-          <div className="text-center w-full relative z-10 py-6">
+          <div className="text-center w-full min-w-0 relative z-10 py-6 flex flex-col items-center">
             <h1 className="services-hero-headline">
               Stunning Animations.<br />
               <span className="gradient-text">Complete Guest Control.</span>
@@ -166,49 +162,104 @@ export default function ServicesPage() {
                 See How It Works ↓
               </Link>
             </div>
+
+            {/* Mobile Showcase (shown below buttons only on mobile/tablet viewport sizes) */}
+            <div className="services-mobile-showcase mt-10">
+              {/* Wedding */}
+              <Link href="#gallery" className="feature-image-card" aria-label="View Wedding Templates">
+                <Image
+                  src="/templates/weddings/AnjaliManeetInvitation/feature.png"
+                  alt="Premium Wedding Template"
+                  fill
+                  sizes="110px"
+                  className="feature-image-pic"
+                />
+                <div className="mockup-label-overlay">
+                  <span className="mockup-label-category">Weddings</span>
+                  <h3 className="mockup-label-title">Anjali & Maneet</h3>
+                </div>
+              </Link>
+
+              {/* Birthday */}
+              <Link href="#gallery" className="feature-image-card" aria-label="View Birthday Templates">
+                <Image
+                  src="/templates/birthdays/BirthDayInvitation/feature.png"
+                  alt="Fun Birthday Template"
+                  fill
+                  sizes="110px"
+                  className="feature-image-pic"
+                />
+                <div className="mockup-label-overlay">
+                  <span className="mockup-label-category">Birthdays</span>
+                  <h3 className="mockup-label-title">Honey Bear</h3>
+                </div>
+              </Link>
+
+              {/* Weddings 2 */}
+              <Link href="#gallery" className="feature-image-card" aria-label="View Wedding Templates">
+                <Image
+                  src="/templates/weddings/NewInvitaionOne/feature.png"
+                  alt="Elegant Wedding Template"
+                  fill
+                  sizes="110px"
+                  className="feature-image-pic"
+                />
+                <div className="mockup-label-overlay">
+                  <span className="mockup-label-category">Weddings</span>
+                  <h3 className="mockup-label-title">Floral Bloom</h3>
+                </div>
+              </Link>
+
+              {/* Baby Shower */}
+              <Link href="#gallery" className="feature-image-card" aria-label="View Baby Shower Templates">
+                <Image
+                  src="/templates/baby-showers/stork-stars.png"
+                  alt="Cute Baby Shower Template"
+                  fill
+                  sizes="110px"
+                  className="feature-image-pic"
+                />
+                <div className="mockup-label-overlay">
+                  <span className="mockup-label-category">Baby Showers</span>
+                  <h3 className="mockup-label-title">Sweet Arrival</h3>
+                </div>
+              </Link>
+            </div>
           </div>
 
           {/* Right Column Showcase Cards */}
           <div className="hero-side-column hero-side-column-right">
-            {/* Card 4: Location Map */}
-            <div className="ui-feature-card">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xl">📍</span>
-                <span className="text-label-sm font-bold text-primary">Live Directions</span>
+            {/* Corporate Template Card */}
+            <Link href="#gallery" className="feature-image-card" aria-label="View Wedding Templates">
+              <Image
+                src="/templates/weddings/NewInvitaionOne/feature.png"
+                alt="Elegant Wedding Template"
+                fill
+                sizes="150px"
+                className="feature-image-pic"
+                priority
+              />
+              <div className="mockup-label-overlay">
+                <span className="mockup-label-category">Weddings</span>
+                <h3 className="mockup-label-title">Floral Bloom</h3>
               </div>
-              <p className="text-body-sm text-on-surface-variant font-medium">
-                Taj Palace Hotel, Mumbai. One-click nav for guests.
-              </p>
-            </div>
+            </Link>
 
-            {/* Card 5: Analytics */}
-            <div className="ui-feature-card">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xl">📊</span>
-                <span className="text-label-sm font-bold text-secondary">Analytics Dashboard</span>
+            {/* Baby Shower Template Card */}
+            <Link href="#gallery" className="feature-image-card" aria-label="View Baby Shower Templates">
+              <Image
+                src="/templates/baby-showers/stork-stars.png"
+                alt="Cute Baby Shower Template"
+                fill
+                sizes="150px"
+                className="feature-image-pic"
+                priority
+              />
+              <div className="mockup-label-overlay">
+                <span className="mockup-label-category">Baby Showers</span>
+                <h3 className="mockup-label-title">Sweet Arrival</h3>
               </div>
-              <div className="flex justify-between items-center mt-1">
-                <div>
-                  <div className="text-headline-sm font-syne font-bold text-on-surface">94%</div>
-                  <p className="text-label-sm text-outline">Open Rate</p>
-                </div>
-                <div className="text-right">
-                  <div className="text-headline-sm font-syne font-bold text-on-surface">2m 14s</div>
-                  <p className="text-label-sm text-outline">Avg Session</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 6: WhatsApp broadcast */}
-            <div className="ui-feature-card">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xl">📲</span>
-                <span className="text-label-sm font-bold text-tertiary">WhatsApp Delivery</span>
-              </div>
-              <p className="text-body-sm text-on-surface-variant leading-relaxed">
-                Broadcast direct links to all guests instantly with real-time delivery ticks.
-              </p>
-            </div>
+            </Link>
           </div>
 
         </div>
@@ -240,7 +291,10 @@ export default function ServicesPage() {
             {/* Left Column: Sticky Timeline Path Checkpoints */}
             <div className="path-indicator-column">
               <div className="map-flow-track" />
-              <div className="map-flow-fill" style={{ height: `${fillHeight}px` }} />
+              <div
+                className="map-flow-fill"
+                style={isDesktop ? { height: `${fillHeight}px` } : { width: `${progress * 256}px` }}
+              />
 
               {steps.map((s, idx) => (
                 <div
@@ -262,6 +316,12 @@ export default function ServicesPage() {
                 let translateShiftY = 0;
                 let shadowVal = "none";
                 let borderVal = "none";
+
+                // Mobile animation variables
+                let translateXVal = "0%";
+                let opacityValMobile = 1;
+                let shadowValMobile = "none";
+                let borderValMobile = "none";
 
                 if (isDesktop) {
                   if (idx === 0) {
@@ -316,6 +376,58 @@ export default function ServicesPage() {
                     shadowVal = "0 -20px 40px -15px rgba(0, 60, 75, 0.16), -20px 0 40px -15px rgba(0, 60, 75, 0.12), 20px 0 40px -15px rgba(0, 60, 75, 0.12)";
                     borderVal = "1px solid rgba(0, 96, 117, 0.08)";
                   }
+                } else {
+                  // Mobile sliding math (translateX)
+                  if (idx === 0) {
+                    if (progress < 0.15) {
+                      translateXVal = "0%";
+                      opacityValMobile = 1;
+                    } else if (progress < 0.45) {
+                      const ratio = (progress - 0.15) / 0.30;
+                      translateXVal = `${-ratio * 120}%`; // slide left
+                      opacityValMobile = 1 - ratio;
+                    } else {
+                      translateXVal = "-120%";
+                      opacityValMobile = 0;
+                    }
+                  } else if (idx === 1) {
+                    if (progress <= 0.15) {
+                      translateXVal = "120%"; // start off-screen right
+                      opacityValMobile = 0;
+                    } else if (progress < 0.45) {
+                      const ratio = (progress - 0.15) / 0.30;
+                      translateXVal = `${(1 - ratio) * 120}%`; // slide center
+                      opacityValMobile = ratio;
+                    } else if (progress <= 0.60) {
+                      translateXVal = "0%";
+                      opacityValMobile = 1;
+                    } else if (progress < 0.90) {
+                      const ratio = (progress - 0.60) / 0.30;
+                      translateXVal = `${-ratio * 120}%`; // slide left
+                      opacityValMobile = 1 - ratio;
+                    } else {
+                      translateXVal = "-120%";
+                      opacityValMobile = 0;
+                    }
+                  } else if (idx === 2) {
+                    if (progress <= 0.60) {
+                      translateXVal = "120%"; // start off-screen right
+                      opacityValMobile = 0;
+                    } else if (progress < 0.90) {
+                      const ratio = (progress - 0.60) / 0.30;
+                      translateXVal = `${(1 - ratio) * 120}%`; // slide center
+                      opacityValMobile = ratio;
+                    } else {
+                      translateXVal = "0%";
+                      opacityValMobile = 1;
+                    }
+                  }
+
+                  // Show shadow and border on the active mobile card
+                  if (activeStep === idx) {
+                    shadowValMobile = "0 10px 30px -10px rgba(0, 60, 75, 0.15)";
+                    borderValMobile = "1px solid rgba(0, 96, 117, 0.08)";
+                  }
                 }
 
                 return (
@@ -331,6 +443,11 @@ export default function ServicesPage() {
                       transition: progress === 0 || progress === 1 ? "all 0.4s ease" : "opacity 0.25s ease, transform 0.1s linear, box-shadow 0.25s ease, border 0.25s ease",
                     } : {
                       zIndex: idx * 10,
+                      opacity: opacityValMobile,
+                      transform: `translateX(${translateXVal})`,
+                      boxShadow: shadowValMobile,
+                      border: borderValMobile,
+                      transition: progress === 0 || progress === 1 ? "all 0.4s ease" : "opacity 0.25s ease, transform 0.1s linear, box-shadow 0.25s ease, border 0.25s ease",
                     } as React.CSSProperties}
                   >
                     <div className="step-card-header">
@@ -361,7 +478,7 @@ export default function ServicesPage() {
               Ready to create your invite?
             </h2>
             <p className="text-body-md text-white/70 max-w-xl mx-auto mb-10">
-              Join hundreds of couples, families, and event planners who trust InviteStash for their most important moments.
+              Join hundreds of couples, families, and event planners who trust InviteBox for their most important moments.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link href="/#gallery" className="bg-white text-primary font-semibold px-8 py-3.5 rounded-full text-label-md hover:bg-white/90 transition-colors flex items-center gap-2">

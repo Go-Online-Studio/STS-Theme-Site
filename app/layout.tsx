@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "InviteStash — Premium Digital Invitations",
+  title: "InviteBox — Premium Digital Invitations",
   description:
     "Create stunning, interactive digital invitations for weddings, birthdays, baby showers, and more. Ditch boring PDFs — send an experience.",
   keywords: ["digital invitations", "RSVP", "wedding invite", "event invite", "interactive invite"],
   openGraph: {
-    title: "InviteStash — Premium Digital Invitations",
+    title: "InviteBox — Premium Digital Invitations",
     description: "Create stunning interactive invitations in minutes.",
     type: "website",
   },

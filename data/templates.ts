@@ -1,6 +1,6 @@
 /**
  * ─────────────────────────────────────────────────────────────────────────────
- *  InviteStash — Template Registry (TypeScript Adapter)
+ *  InviteBox — Template Registry (TypeScript Adapter)
  * ─────────────────────────────────────────────────────────────────────────────
  *
  *  ✅ DATA IS NOW JSON-DRIVEN

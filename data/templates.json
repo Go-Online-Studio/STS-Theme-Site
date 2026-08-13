@@ -1,5 +1,5 @@
 {
-  "_comment": "InviteStash Root Template Registry — Single source of truth. Only REAL templates with working index.html files are listed here. Each category has a per-category JSON at public/templates/<category>/<category>.json and each template has its own template.json in its sub-folder.",
+  "_comment": "InviteBox Root Template Registry — Single source of truth. Only REAL templates with working index.html files are listed here. Each category has a per-category JSON at public/templates/<category>/<category>.json and each template has its own template.json in its sub-folder.",
   "version": "2.0.0",
   "categories": [
     {

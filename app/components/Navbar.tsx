@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
-  // { label: "Gallery", href: "/#gallery" },
+  { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "About Us", href: "/about" },
   { label: "Contact Us", href: "/contact" },
-  // { label: "Comparison", href: "/#comparison" },
 ];
 
 export default function Navbar() {
@@ -23,17 +23,20 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        scrolled ? "navbar-scrolled" : "navbar-top"
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? "navbar-scrolled" : "navbar-top"
+        }`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-headline-md font-syne font-bold tracking-tight text-white"
-        >
-          InviteStash
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/Logo.png"
+            alt="InviteBox Logo"
+            width={240}
+            height={72}
+            style={{ height: "72px", width: "auto" }}
+            className="object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}
@@ -77,11 +80,11 @@ export default function Navbar() {
         >
           {mobileOpen ? (
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              <path d="M18 6 6 18M6 6l12 12"/>
+              <path d="M18 6 6 18M6 6l12 12" />
             </svg>
           ) : (
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              <path d="M3 12h18M3 6h18M3 18h18"/>
+              <path d="M3 12h18M3 6h18M3 18h18" />
             </svg>
           )}
         </button>

@@ -41,7 +41,7 @@ export default function ComparisonSection() {
       <div className="text-center mb-14 scroll-reveal">
         <h2 className="text-headline-lg text-on-surface font-syne">The Upgrade is Real</h2>
         <p className="text-body-md text-on-surface-variant mt-3 max-w-xl mx-auto">
-          See exactly why thousands of hosts switched to InviteStash.
+          See exactly why thousands of hosts switched to InviteBox.
         </p>
       </div>
 
@@ -58,7 +58,7 @@ export default function ComparisonSection() {
           />
           <div className="flex items-center gap-4 mb-7 relative z-10">
             <div className="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-outline"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-outline"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" /><polyline points="14 2 14 8 20 8" /></svg>
             </div>
             <h3 className="text-headline-md text-outline font-syne">Boring WhatsApp Invites</h3>
           </div>
@@ -87,7 +87,7 @@ export default function ComparisonSection() {
           />
           <div className="flex items-center gap-4 mb-7 relative z-10">
             <div className="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>
             </div>
             <h3 className="text-headline-md font-syne gradient-text">Our Premium Invites</h3>
           </div>

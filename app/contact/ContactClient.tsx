@@ -126,11 +126,10 @@ export default function ContactClient() {
                 <button
                   type="submit"
                   disabled={status !== "idle"}
-                  className={`w-full md:w-auto font-syne font-semibold text-lg px-8 py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 ${
-                    status === "sent"
+                  className={`w-full md:w-auto font-syne font-semibold text-lg px-8 py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 ${status === "sent"
                       ? "bg-tertiary-container text-white"
                       : "bg-primary-container text-on-primary hover:shadow-lg active:scale-[0.98]"
-                  }`}
+                    }`}
                 >
                   {status === "submitting" && (
                     <>
@@ -224,10 +223,10 @@ export default function ContactClient() {
               </div>
               <h3 className="font-syne font-semibold text-2xl text-on-surface mb-2">Email</h3>
               <a
-                href="mailto:hello@invitestash.com"
+                href="mailto:hello@InviteBox.com"
                 className="text-body-md text-primary font-semibold hover:underline decoration-secondary"
               >
-                hello@invitestash.com
+                hello@InviteBox.com
               </a>
               <p className="text-label-sm text-secondary mt-2 font-mono">24h Response Guarantee</p>
             </div>
@@ -239,7 +238,7 @@ export default function ContactClient() {
           <div className="relative w-full h-[480px] rounded-3xl overflow-hidden shadow-xl border-4 border-white">
             <div className="w-full h-full filter grayscale hover:grayscale-0 transition-all duration-700">
               <iframe
-                title="InviteStash Studio Location Map"
+                title="InviteBox Studio Location Map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976373946229!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1655123456789!5m2!1sen!2sus"
                 width="100%"
                 height="100%"

@@ -15,14 +15,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const template = getTemplateById(Number(id));
-  if (!template) return { title: "Template Not Found — InviteStash" };
+  if (!template) return { title: "Template Not Found — InviteBox" };
   return {
-    title: `${template.name} — InviteStash`,
+    title: `${template.name} — InviteBox`,
     description:
       template.description ??
       `${template.name} — ${template.style} digital invitation template.`,
     openGraph: {
-      title: `${template.name} — InviteStash`,
+      title: `${template.name} — InviteBox`,
       description: template.description ?? `${template.name} — ${template.style} digital invitation.`,
       images: template.imageSrc ? [{ url: template.imageSrc }] : [],
     },

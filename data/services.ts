@@ -117,7 +117,7 @@ export const services: Service[] = [
     description:
       "Replace messy WhatsApp threads and spreadsheets with a streamlined RSVP dashboard. Guests respond in one tap — you see everything in real time.",
     longDescription:
-      "Managing RSVPs for a large event used to mean chasing people on WhatsApp for weeks, manually updating spreadsheets, and still being unsure about the final headcount on the day. InviteStash's RSVP Management completely replaces that chaos. Guests tap a single button inside the invite — no app install, no registration — and their response is instantly reflected in your host dashboard. You can ask custom questions (dietary needs, table preferences, plus-ones), set an RSVP deadline, and trigger automated WhatsApp reminders for guests who haven't responded yet.",
+      "Managing RSVPs for a large event used to mean chasing people on WhatsApp for weeks, manually updating spreadsheets, and still being unsure about the final headcount on the day. InviteBox's RSVP Management completely replaces that chaos. Guests tap a single button inside the invite — no app install, no registration — and their response is instantly reflected in your host dashboard. You can ask custom questions (dietary needs, table preferences, plus-ones), set an RSVP deadline, and trigger automated WhatsApp reminders for guests who haven't responded yet.",
     features: [
       "One-tap RSVP from the invite itself",
       "Custom questionnaire (dietary, plus-ones, table choice)",
@@ -196,7 +196,7 @@ export const services: Service[] = [
     description:
       "Real-time insights into your guest list turn guesswork into confidence. See open rates, confirmations, dietary trends, and more.",
     longDescription:
-      "You sent 200 invites — but how many actually opened it? Who confirmed, who declined, who's still undecided? What dietary preferences are most common? Where are your guests coming from? InviteStash Guest Analytics answers all of these questions in real time, through a beautifully designed dashboard built specifically for event hosts. You don't need to be a data analyst — the dashboard surfaces the key numbers you need at a glance, with trend graphs, dietary charts, and a shareable summary you can forward to your caterer or venue.",
+      "You sent 200 invites — but how many actually opened it? Who confirmed, who declined, who's still undecided? What dietary preferences are most common? Where are your guests coming from? InviteBox Guest Analytics answers all of these questions in real time, through a beautifully designed dashboard built specifically for event hosts. You don't need to be a data analyst — the dashboard surfaces the key numbers you need at a glance, with trend graphs, dietary charts, and a shareable summary you can forward to your caterer or venue.",
     features: [
       "Live open-rate and view tracking per invite",
       "Confirmed / Declined / Pending breakdown",
@@ -253,7 +253,7 @@ export const services: Service[] = [
     faq: [
       {
         q: "Is this available for all invite types?",
-        a: "Yes — analytics works with any invite created or hosted on InviteStash.",
+        a: "Yes — analytics works with any invite created or hosted on InviteBox.",
       },
       {
         q: "How accurate is the open-rate tracking?",
@@ -273,7 +273,7 @@ export const services: Service[] = [
     description:
       "Send your invite to hundreds of guests simultaneously — via WhatsApp, email, or a shareable link. No app installs. Works on every device.",
     longDescription:
-      "Getting your beautiful invite in front of every guest shouldn't be a logistical nightmare. InviteStash Instant Delivery lets you share with your entire guest list in seconds — through WhatsApp bulk share, email blast, or a single link you can post anywhere. No guest needs to install anything. The invite opens directly in their phone browser, renders beautifully, and plays the music and animations exactly as designed. You can also generate a QR code for physical invitation cards, schedule the send for a specific date, and get read receipts so you know exactly who has seen the invite.",
+      "Getting your beautiful invite in front of every guest shouldn't be a logistical nightmare. InviteBox Instant Delivery lets you share with your entire guest list in seconds — through WhatsApp bulk share, email blast, or a single link you can post anywhere. No guest needs to install anything. The invite opens directly in their phone browser, renders beautifully, and plays the music and animations exactly as designed. You can also generate a QR code for physical invitation cards, schedule the send for a specific date, and get read receipts so you know exactly who has seen the invite.",
     features: [
       "WhatsApp direct share with one-click copy",
       "Bulk email delivery with custom subject lines",

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Services — InviteStash",
+  title: "Services — InviteBox",
   description:
-    "Explore InviteStash's full suite of services: custom e-invite design, RSVP management, guest analytics, and instant delivery. Everything you need to host effortlessly.",
+    "Explore InviteBox's full suite of services: custom e-invite design, RSVP management, guest analytics, and instant delivery. Everything you need to host effortlessly.",
 };
 
 export default function ServicesLayout({
